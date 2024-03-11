@@ -45,7 +45,7 @@ const Scorecard = () => {
   }, [matchId]);
 
   if (!matchDetails) {
-    return <div>Loading...</div>;
+    return <div className="background" style={{textAlign:"center"}}><b>Wait till the match starts...</b></div>;
   }
   
   const handleUpdateScore =()=>{
@@ -77,6 +77,9 @@ const Scorecard = () => {
     run,
   } = matchDetails;
 
+const StrikeRateOne =Math.floor(batterOneRun*100/batterOneBowl);
+const StrikeRateTwo =Math.floor(batterTwoRun*100/batterTwoBowl);
+
   return (
     <div className="background">
 
@@ -104,9 +107,9 @@ const Scorecard = () => {
             <CardBody>
               <CardTitle tag="h5">Innings Details</CardTitle>
               <CardText>
-                <strong>{batterOne}:</strong> ({batterOneRun} runs, {batterOneBowl} bowls)
+                <strong>{batterOne}:</strong> ({batterOneRun} runs, {batterOneBowl} bowls,{StrikeRateOne} SR)
                 <br />
-                <strong>{batterTwo}:</strong>({batterTwoRun} runs, {batterTwoBowl} bowls)
+                <strong>{batterTwo}:</strong>({batterTwoRun} runs, {batterTwoBowl} bowls,{StrikeRateTwo} SR)
                 <br />
                 <strong>{bowler}:</strong> {bowlerBowled} bowl, ({wickets} wickets)
                 <br />
