@@ -2,28 +2,24 @@ require("dotenv").config();
 require("express-async-errors");
 
 // extra security packages
-const helmet = require('helmet');
-const cors = require('cors');
-const xss = require('xss-clean');
-
+const helmet = require("helmet");
+const cors = require("cors");
+const xss = require("xss-clean");
 
 const express = require("express");
 const app = express();
 
 const ConnectDB = require("./db/connect");
 const authenticateUser = require("./middlewares/authentication");
-const isAdmin =require('./middlewares/is-admin')
+const isAdmin = require("./middlewares/is-admin");
 //routers
 const authRouter = require("./routes/auth");
 const scorecardRouter = require("./routes/userscore");
-const adminscorecardRouter =require("./routes/adminscore");
+const adminscorecardRouter = require("./routes/adminscore");
 
 //error handler
 const notFoundMiddleware = require("./middlewares/not-found");
 const errorHandlerMiddleware = require("./middlewares/error-handler");
-
-
-
 
 app.use(express.json());
 app.use(helmet());
@@ -36,8 +32,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/auth", authRouter);
-app.use('/api/v1',authenticateUser,scorecardRouter); // users can access this routes
-app.use('/api/v1',authenticateUser,isAdmin,adminscorecardRouter);         //only admin can access this routes
+app.use("/api/v1", authenticateUser, scorecardRouter); // users can access this routes
+app.use("/api/v1", authenticateUser, isAdmin, adminscorecardRouter); //only admin can access this routes
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

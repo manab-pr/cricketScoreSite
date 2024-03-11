@@ -14,5 +14,8 @@
   },
   "devDependencies": {
     "turbo": "^1.12.5"
+  },
+  "resolutions": {
+    "react-error-overlay": "6.0.9"
   }
 }
