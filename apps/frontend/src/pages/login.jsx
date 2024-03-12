@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Container,
   Row,
@@ -33,7 +33,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v1/auth/login",
+        import.meta.env.VITE_APP_LOGIN_URL,
         formData
       );
       const token = response.data.token;

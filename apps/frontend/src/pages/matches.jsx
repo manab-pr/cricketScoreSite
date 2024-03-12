@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import {Container,Row,Col, Card, CardBody, CardTitle, CardText, Button } from "reactstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
@@ -30,7 +30,7 @@ const Matches = () => {
   useEffect(() => {
     const fetchMatches = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/v1/match", {
+        const response = await axios.get(import.meta.env.VITE_APP_GET_ALL_MATCH, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setMatches(response.data.match);

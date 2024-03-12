@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import axios from "axios";
 import { Container, Row, Col, Card, CardBody, Button } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -32,7 +32,7 @@ const UpdateScore = () => {
     e.preventDefault();
     try {
       await axios.patch(
-        `http://localhost:5000/api/v1/score/${matchId}`,
+        `${import.meta.env.VITE_APP_UPDATE_SCORE}/${matchId}`,
         formData,
         {
           headers: { Authorization: `Bearer ${token}` },

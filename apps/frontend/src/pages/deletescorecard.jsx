@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { Card, CardBody, CardTitle, Button } from 'reactstrap';
@@ -12,7 +11,7 @@ const DeleteScore = () => {
   const handleDelete = async () => {
     try {
         await axios.delete(
-        `http://localhost:5000/api/v1/score/${matchId}`,
+        `${import.meta.env.VITE_APP_GET_MATCH_BY_ID}/${matchId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import axios from "axios";
 import { Container, Row, Col, Card, CardBody, Button } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -6,7 +6,7 @@ import "../App.css";
 import { useNavigate } from "react-router-dom";
 const token = localStorage.getItem("token");
 
-const createMatch = () => {
+const CreateMatch = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     teamone: "",
@@ -20,7 +20,7 @@ const createMatch = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/v1/match", formData, {
+      await axios.post(import.meta.env.VITE_APP_CREATE_MATCH, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       navigate("/matches");
@@ -83,4 +83,4 @@ const createMatch = () => {
   );
 };
 
-export default createMatch;
+export default CreateMatch;

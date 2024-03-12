@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -32,7 +32,7 @@ const Scorecard = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `http://localhost:5000/api/v1/score/${matchId}`,
+          `${import.meta.env.VITE_APP_GET_MATCH_BY_ID}/${matchId}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setMatchDetails(response.data.score);

@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 import { Card, CardBody, CardTitle, Button } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,7 +12,7 @@ const DeleteScore = () => {
   const handleDelete = async () => {
     try {
         await axios.delete(
-        `http://localhost:5000/api/v1/match/${matchId}`,
+        `${import.meta.env.VITE_APP_DELETE_MATCH}/${matchId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

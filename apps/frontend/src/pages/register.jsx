@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Container, Row, Col, Card, CardBody, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
@@ -20,10 +20,10 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/v1/auth/register', formData);
+      const response = await axios.post(import.meta.env.VITE_APP_REGISTER_URL, formData);
       const token =response.data.token;
       localStorage.setItem('token',token);  //saving the token 
-      navigate('/')
+      navigate('/',{ replace: true })
     } catch (error) {
       console.error('Registration failed', error);
     }

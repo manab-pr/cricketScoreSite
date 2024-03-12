@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import axios from "axios";
 import { Container, Row, Col, Card, CardBody, Button } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 const token = localStorage.getItem("token");
 
 const UpdateMatch = () => {
+  let { matchId } = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     teamone: "",
@@ -20,7 +21,7 @@ const UpdateMatch = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch("http://localhost:5000/api/v1/match", formData, {
+      await axios.patch(`${import.meta.env.VITE_APP_UPDATE_MATCH}/${matchId}`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       navigate("/matches");

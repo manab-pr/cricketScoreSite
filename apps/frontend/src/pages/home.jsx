@@ -32,7 +32,7 @@ const HomePage = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.get('http://localhost:5000/api/v1/auth/logout');
+      await axios.get(import.meta.env.VITE_APP_LOGOUT_URL);
       localStorage.removeItem("token"); 
       setIsLoggedIn(false); 
     } catch (error) {
@@ -63,10 +63,10 @@ const HomePage = () => {
           ) : (
             <React.Fragment>
               <NavItem>
-                <NavLink href="/login">Login</NavLink>
+                <NavLink href="/login"><b>Login</b></NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/register">Sign Up</NavLink>
+                <NavLink href="/register"><b>Register</b></NavLink>
               </NavItem>
             </React.Fragment>
           )}
