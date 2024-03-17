@@ -7,7 +7,7 @@ COPY package.json ./
 COPY  .  .
 RUN yarn install
 
-EXPOSE 5173
+EXPOSE 3000
 EXPOSE 5000
 
 CMD [ "yarn","start" ]
